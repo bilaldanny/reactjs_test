@@ -17,6 +17,10 @@ app.listen(port, () => {
 });
 
 app.get('/', async (req, res) => {
+    res.send('hello')
+})
+
+app.get('/get_data', async (req, res) => {
     try {
         const value = req.body.value;
         
