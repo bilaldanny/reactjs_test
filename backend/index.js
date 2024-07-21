@@ -17,7 +17,9 @@ app.listen(port, () => {
 });
 
 app.get('/', async (req, res) => {
-    res.send('hello')
+    const value = req.body.value;
+
+    res.send(value);
 })
 
 app.get('/get_data', async (req, res) => {
