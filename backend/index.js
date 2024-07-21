@@ -9,9 +9,9 @@ mongoose.connect('mongodb+srv://bilalyounus1974:J1QNheSwfAKPQNjA@optimummediates
 
 const app = express();
 const corsConfig = {
-    origin:"*",
-    credential:true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
 }
 app.options("", cors(corsConfig))
 app.use(cors(corsConfig));
@@ -20,6 +20,14 @@ app.use(express.json());
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+// Manually set CORS headers
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
 });
 
 app.get('/', async (req, res) => {
