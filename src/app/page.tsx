@@ -24,7 +24,7 @@ export default function Home() {
 
     try {
       // Make the request to your Node.js server
-      const response = await axios.post('https://reactjs-test-server.vercel.app/get_data', { value: newValue });
+      const response = await axios.post(`https://reactjs-test-server.vercel.app/get/${newValue}`);
       const array = Object.entries(response.data).map(([key, value]) => ({ key, value }));
       setRiskData(array);
       await console.log(array);
@@ -39,7 +39,7 @@ export default function Home() {
 
     try {
       // Make the request to your Node.js server
-      const response = await axios.post('https://reactjs-test-server.vercel.app/get_data', { value: newValue });
+      const response = await axios.post(`https://reactjs-test-server.vercel.app/get/${newValue}`);
       const array = Object.entries(response.data).map(([key, value]) => ({ key, value }));
       setRiskData(array);
       await console.log(array);
