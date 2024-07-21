@@ -8,7 +8,13 @@ const RiskScore = require('./db/riskScoreModel');
 mongoose.connect('mongodb+srv://bilalyounus1974:J1QNheSwfAKPQNjA@optimummediatest.vyei4at.mongodb.net/?retryWrites=true&w=majority&appName=OptimummediaTest');
 
 const app = express();
-app.use(cors());
+const corsConfig = {
+    origin:"*",
+    credential:true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+}
+app.options("", cors(corsConfig))
+app.use(cors(corsConfig));
 app.use(express.json());
 
 const port = process.env.PORT || 5000;
