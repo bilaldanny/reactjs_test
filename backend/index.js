@@ -31,6 +31,8 @@ app.get('/', async (req, res) => {
 app.get('/get/:id', async (req, res) => {
     try {
         const value = req.params.id;
+
+        res.send(value);
         
         // Find data in MongoDB
         const data = await RiskScore.findOne({ riskScore: value }).select('-_id nigerianStocks foreignStocks techStocks emergingStocks nigerianBonds foreignBonds commodities realEstate tBills alternative');
