@@ -8,14 +8,17 @@ const RiskScore = require('./db/riskScoreModel');
 mongoose.connect('mongodb+srv://bilalyounus1974:J1QNheSwfAKPQNjA@optimummediatest.vyei4at.mongodb.net/?retryWrites=true&w=majority&appName=OptimummediaTest');
 
 const app = express();
-const corsConfig = {
-    origin:"*",
-    credential:true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-}
-app.options("", cors(corsConfig))
-app.use(cors(corsConfig));
+app.use(cors());
 app.use(express.json());
+
+
+// const corsConfig = {
+//     origin:"*",
+//     credential:true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+// }
+// app.options("", cors(corsConfig))
+// app.use(cors(corsConfig));
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
@@ -34,6 +37,8 @@ app.get('/get/:id', async (req, res) => {
         
         // Find data in MongoDB
         const data = await RiskScore.findOne({ riskScore: value }).select('-_id nigerianStocks foreignStocks techStocks emergingStocks nigerianBonds foreignBonds commodities realEstate tBills alternative');
+
+        res.send(value);
     
         if (data) {
             res.json(data);
