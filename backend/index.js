@@ -16,7 +16,7 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-app.get('/get_data', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
         const value = req.body.value;
         
