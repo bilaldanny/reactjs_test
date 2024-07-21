@@ -17,7 +17,13 @@ app.listen(port, () => {
 });
 
 app.get('/', async (req, res) => {
-    const value = req.body.value;
+    const value = req.body;
+
+    res.send(value);
+})
+
+app.get('/get/:id', async (req, res) => {
+    const value = req.params.id;
 
     res.send(value);
 })
